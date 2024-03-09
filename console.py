@@ -187,7 +187,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     methods[method](args[0] + " " + id)
 
-        except(IndexError, KeyError):
+        except (IndexError, KeyError):
             print("*** Unknown syntax: {}".format(line))
             return False
 
