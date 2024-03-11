@@ -99,7 +99,15 @@ class HBNBCommand(cmd.Cmd):
             if cls not in self.classes:
                 print("** class doesn't exist **")
                 return
-            dic = dict(filter(lambda x: type(x[1]) == eval(cls), dic.items()))
+            dic = dict(
+                    filter(
+                        lambda x: isinstance(
+                            x[1],
+                            eval(cls)
+                        ),
+                        dic.items()
+                    )
+            )
         lobj = [str(v) for k, v in dic.items()]
         print(lobj)
 
@@ -135,9 +143,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_count(self, args):
-        """
-        Retrieves the number of instances of a class
-        """
+        """Retrieves the number of instances of a class"""
         dic = storage.all()
         count = 0
         if args:
@@ -146,7 +152,15 @@ class HBNBCommand(cmd.Cmd):
             if cls not in self.classes:
                 print("** class doesn't exist **")
                 return False
-            dic = dict(filter(lambda x: type(x[1]) == eval(cls), dic.items()))
+            dic = dict(
+                    filter(
+                        lambda x: isinstance(
+                            x[1],
+                            eval(cls)
+                            ),
+                        dic.itemsi()
+                    )
+            )
         print(len(dic))
 
     def default(self, line):
